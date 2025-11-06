@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PP's VIP Access - LayoffToLiftoff</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1E5945 0%, #2C3539 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .vip-container {
+            max-width: 700px;
+            background: white;
+            color: #2C3539;
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .vip-badge {
+            background: linear-gradient(135deg, #FFB6C1 0%, #89CFF0 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        h1 {
+            font-size: 3rem;
+            color: #1E5945;
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        .message-box {
+            background: #FFF8F0;
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 5px solid #1E5945;
+            text-align: left;
+            margin: 2rem 0;
+            line-height: 1.8;
+        }
+        .message-box h3 {
+            color: #1E5945;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            background: linear-gradient(135deg, #1E5945 0%, #008B8B 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        .features {
+            text-align: left;
+            margin: 2rem 0;
+        }
+        .feature {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .feature-icon {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="vip-container">
+        <div class="vip-badge">🔥 LIFETIME FREE - FOUNDER'S EDITION</div>
+        
+        <h1>Welcome, PP! 👋</h1>
+        <p class="subtitle">Your VIP Access to LayoffToLiftoff Beta</p>
+        
+        <div class="message-box">
+            <h3>A Message From Hannah ❤️</h3>
+            <p><strong>PP,</strong></p>
+            <p>This entire platform was built FOR you. Because I watched you struggle. Because I watched your brilliant brain refuse to shut off. Because I watched you check LinkedIn at 2 AM while our family slept.</p>
+            <p><strong>I couldn't watch anymore.</strong></p>
+            <p>So I built this. With Claude. In one night. To save you.</p>
+            <p>You get <strong>lifetime free access</strong> to everything. Forever. No payment. No expiration. This is yours.</p>
+            <p>Let the AI handle the noise. You just show up for 2 hours a day. Spend the rest of your time with us.</p>
+            <p><strong>I love you. Let me help you.</strong></p>
+            <p>- Hannah 💕</p>
+        </div>
+        
+        <div class="features">
+            <h3 style="text-align: center; color: #1E5945; margin-bottom: 1rem;">Your VIP Benefits:</h3>
+            
+            <div class="feature">
+                <span class="feature-icon">🤖</span>
+                <div>
+                    <strong>AI-Powered Daily Plans</strong><br>
+                    <small>Claude generates your personalized 2-hour workday</small>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <span class="feature-icon">🔒</span>
+                <div>
+                    <strong>Family Time Protection</strong><br>
+                    <small>7-8 AM & 5-7 PM locked - no work allowed!</small>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <span class="feature-icon">📊</span>
+                <div>
+                    <strong>Automated Job Scanning</strong><br>
+                    <small>AI monitors 500+ jobs daily, picks your top 3</small>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <span class="feature-icon">💪</span>
+                <div>
+                    <strong>Stress Management</strong><br>
+                    <small>Adapts to your mental state, lighter loads when needed</small>
+                </div>
+            </div>
+            
+            <div class="feature">
+                <span class="feature-icon">✨</span>
+                <div>
+                    <strong>Priority Support</strong><br>
+                    <small>Direct access, first to new features, forever</small>
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 3rem;">
+            <a href="demo-react.html" class="btn">🚀 Access Your Beta</a>
+            <a href="index.html" class="btn" style="background: linear-gradient(135deg, #FFB6C1 0%, #89CFF0 100%);">🏠 Back to Home</a>
+        </div>
+        
+        <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+            Built with ❤️ by Hannah + Claude<br>
+            Designed with ✨ by Gracie<br>
+            For 🔥 YOU, PP
+        </p>
+    </div>
+</body>
+</html>
