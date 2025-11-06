@@ -1,0 +1,242 @@
+/* ============================================
+   LAYOFF TO LIFTOFF - PITCH DECK STYLES
+   Classy Presentation Mode (Gracie-Approved!)
+   ============================================ */
+
+.pitch-hero {
+  background: var(--gradient-hero);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--soft-white);
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.pitch-hero h1 {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--baby-pink), var(--baby-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pitch-hero .tagline {
+  font-size: 2rem;
+  color: var(--cream);
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.slide {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-dark {
+  background: var(--dark-viridian);
+  color: var(--soft-white);
+}
+
+.slide-light {
+  background: var(--cream);
+  color: var(--charcoal);
+}
+
+.slide-white {
+  background: var(--soft-white);
+  color: var(--charcoal);
+}
+
+.slide-accent {
+  background: linear-gradient(135deg, var(--baby-pink) 0%, var(--teal) 100%);
+  color: var(--soft-white);
+}
+
+.slide h2 {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.slide-dark h2,
+.slide-accent h2 {
+  color: var(--soft-white);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.problem-layer {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px solid var(--baby-pink);
+}
+
+.problem-layer h3 {
+  color: var(--baby-pink);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.solution-mockup {
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 2rem;
+  border-radius: 15px;
+  font-family: 'Courier New', monospace;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--teal);
+}
+
+.solution-mockup pre {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.metric-box {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.metric-box:hover {
+  border-color: var(--baby-pink);
+  transform: translateY(-5px);
+}
+
+.metric-box .number {
+  font-size: 4rem;
+  font-weight: 800;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.metric-box .label {
+  font-size: 1.2rem;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.team-card {
+  background: var(--soft-white);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.team-card:hover {
+  border-color: var(--teal);
+  transform: scale(1.05);
+}
+
+.team-card .name {
+  font-size: 1.5rem;
+  color: var(--dark-viridian);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.team-card .role {
+  font-size: 1.1rem;
+  color: var(--teal);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.team-card .bio {
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.origin-story {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  border-left: 4px solid var(--baby-pink);
+}
+
+.origin-story p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--cream);
+}
+
+.cta-slide {
+  background: var(--gradient-teal-viridian);
+  text-align: center;
+}
+
+.cta-slide h2 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  color: var(--soft-white);
+}
+
+.cta-slide .btn {
+  font-size: 1.5rem;
+  padding: 1.5rem 4rem;
+  margin: 1rem;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 9999;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-pink-blue);
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .pitch-hero h1 { font-size: 3rem; }
+  .pitch-hero .tagline { font-size: 1.3rem; }
+  .slide h2 { font-size: 2.5rem; }
+  .slide { padding: 4rem 1rem; }
+  .metric-box .number { font-size: 3rem; }
+  .team-card { padding: 1.5rem; }
+}

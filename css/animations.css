@@ -1,314 +1,82 @@
 /* ============================================
    LAYOFF TO LIFTOFF - ANIMATIONS
-   Making everything LEGENDARY with motion!
+   Classy, Smooth Animations (Gracie-Approved!)
    ============================================ */
 
-/* === FADE IN ANIMATIONS === */
+/* === KEYFRAME ANIMATIONS === */
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* === SCALE ANIMATIONS === */
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* === FLOAT ANIMATION === */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-/* === GLOW ANIMATION === */
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(255, 140, 66, 0.6);
-  }
-}
-
-/* === RAINBOW (for Konami code) === */
-@keyframes rainbow {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-
-/* === SHAKE ANIMATION === */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-  20%, 40%, 60%, 80% { transform: translateX(10px); }
-}
-
-/* === BOUNCE ANIMATION === */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-}
-
-/* === SLIDE ANIMATIONS === */
 @keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-/* === ROTATE ANIMATION === */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(255, 182, 193, 0); }
 }
 
-/* === UTILITY CLASSES === */
-.fade-in {
-  animation: fadeIn 0.8s ease forwards;
+@keyframes pulseTeal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 139, 139, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(0, 139, 139, 0); }
 }
 
-.fade-in-up {
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
+@keyframes glowPink {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(255, 182, 193, 0.6); }
 }
 
-.fade-in-down {
-  animation: fadeInDown 0.8s ease forwards;
-  opacity: 0;
+@keyframes glowTeal {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 139, 139, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 139, 139, 0.6); }
 }
 
-.fade-in-left {
-  animation: fadeInLeft 0.8s ease forwards;
-  opacity: 0;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-.fade-in-right {
-  animation: fadeInRight 0.8s ease forwards;
-  opacity: 0;
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.scale-in {
-  animation: scaleIn 0.6s ease forwards;
-  opacity: 0;
-}
+/* === ANIMATION CLASSES === */
+.animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+.animate-fadeInUp { animation: fadeInUp 0.8s ease-out; }
+.animate-slideInLeft { animation: slideInLeft 0.8s ease-out; }
+.animate-slideInRight { animation: slideInRight 0.8s ease-out; }
+.animate-pulse { animation: pulse 2s infinite; }
+.animate-pulseTeal { animation: pulseTeal 2s infinite; }
+.animate-glowPink { animation: glowPink 2s ease-in-out infinite; }
+.animate-glowTeal { animation: glowTeal 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
 
-.pulse {
-  animation: pulse 2s ease-in-out infinite;
-}
+/* === DELAY CLASSES === */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
 
-.float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-.shake {
-  animation: shake 0.5s ease;
-}
-
-.bounce {
-  animation: bounce 1s ease;
-}
-
-/* === SCROLL REVEAL === */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.scroll-reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* === HOVER EFFECTS === */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(255, 140, 66, 0.5);
-}
-
-/* === LOADING STATES === */
-.loading {
-  position: relative;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-.loading::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 30px;
-  margin: -15px 0 0 -15px;
-  border: 3px solid rgba(255, 140, 66, 0.3);
-  border-top-color: var(--phoenix-orange);
-  border-radius: 50%;
-  animation: rotate 1s linear infinite;
-}
-
-/* === GRADIENT ANIMATION === */
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animated-gradient {
+/* === GRADIENT BACKGROUND ANIMATION === */
+.gradient-animated {
+  background: linear-gradient(135deg, #FFB6C1, #008B8B, #89CFF0);
   background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-/* === TEXT ANIMATIONS === */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-.typing-effect {
-  overflow: hidden;
-  border-right: 2px solid var(--phoenix-orange);
-  white-space: nowrap;
-  animation: typing 3s steps(40) 1s forwards, blink 0.75s step-end infinite;
-}
-
-/* === STAGGER DELAYS === */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-
-/* === RESPONSIVE ANIMATIONS === */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  animation: gradientFlow 8s ease infinite;
 }

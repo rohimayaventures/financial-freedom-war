@@ -1,0 +1,237 @@
+/* ============================================
+   LAYOFF TO LIFTOFF - BATTLE MODE STYLES
+   Claude vs ChatGPT Showdown (Gracie-Approved!)
+   ============================================ */
+
+.battle-arena {
+  min-height: 100vh;
+  background: var(--gradient-hero);
+  padding: 4rem 2rem;
+  color: var(--soft-white);
+}
+
+.battle-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.battle-header h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.battle-header .subtitle {
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+
+.vs-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  min-width: 350px;
+  border: 2px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.team-hannah {
+  border-color: var(--baby-pink);
+}
+
+.team-prasad {
+  border-color: var(--baby-blue);
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.team-name {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.team-hannah .team-name {
+  color: var(--baby-pink);
+}
+
+.team-prasad .team-name {
+  color: var(--baby-blue);
+}
+
+.ai-partner {
+  font-size: 1.3rem;
+  color: var(--cream);
+  margin-bottom: 2rem;
+}
+
+.score-display {
+  font-size: 5rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.team-hannah .score-display {
+  background: linear-gradient(135deg, var(--baby-pink), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.team-prasad .score-display {
+  background: linear-gradient(135deg, var(--baby-blue), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vs-icon {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--teal);
+  animation: pulse 2s infinite;
+}
+
+.stats-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  border-left: 4px solid var(--baby-pink);
+}
+
+.stat-item h3 {
+  font-size: 1.3rem;
+  color: var(--baby-pink);
+  margin-bottom: 1rem;
+}
+
+.stat-comparison {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.stat-value {
+  color: var(--soft-white);
+  font-weight: 700;
+}
+
+.winner-banner {
+  background: var(--gradient-pink-blue);
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 4rem;
+  box-shadow: 0 10px 50px rgba(255, 182, 193, 0.4);
+}
+
+.winner-banner h2 {
+  font-size: 3rem;
+  color: var(--soft-white);
+  margin-bottom: 1rem;
+}
+
+.winner-banner p {
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.app-card {
+  background: var(--soft-white);
+  color: var(--charcoal);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-smooth);
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.app-card h4 {
+  color: var(--dark-viridian);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.app-card .build-time {
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.love-note {
+  background: rgba(255, 182, 193, 0.2);
+  border: 2px solid var(--baby-pink);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.love-note h3 {
+  color: var(--baby-pink);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.love-note p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--cream);
+}
+
+.battle-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.battle-cta .btn {
+  font-size: 1.3rem;
+  padding: 1.5rem 3rem;
+  margin: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .battle-header h1 { font-size: 2.5rem; }
+  .vs-container { flex-direction: column; gap: 2rem; }
+  .team-card { min-width: 100%; padding: 2rem; }
+  .score-display { font-size: 3rem; }
+  .winner-banner h2 { font-size: 2rem; }
+  .love-note { padding: 2rem; }
+}
