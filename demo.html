@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LayoffToLiftoff - Beta Demo</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <style>
+        /* Demo-specific styles */
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .demo-step {
+            background: var(--soft-white);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--dark-viridian);
+        }
+        
+        .demo-step.hidden {
+            display: none;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--gradient-hero);
+            color: var(--soft-white);
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-viridian);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--teal);
+            border-radius: 10px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--baby-pink);
+        }
+        
+        .stress-slider {
+            width: 100%;
+            height: 8px;
+            background: var(--gradient-pink-blue);
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        .stress-value {
+            display: inline-block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--teal);
+            margin-left: 1rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .daily-plan {
+            background: var(--dark-viridian);
+            color: var(--soft-white);
+            padding: 2rem;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            line-height: 1.8;
+        }
+        
+        .plan-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .plan-section:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-section h3 {
+            color: var(--baby-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .task-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--teal);
+        }
+        
+        .schedule-item {
+            display: flex;
+            padding: 1rem;
+            border-left: 3px solid var(--baby-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .schedule-time {
+            min-width: 150px;
+            font-weight: 700;
+            color: var(--baby-blue);
+        }
+        
+        .locked-time {
+            border-left-color: var(--baby-pink);
+        }
+        
+        .locked-time .schedule-time {
+            color: var(--baby-pink);
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background: var(--gradient-teal-viridian);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .loading-spinner {
+            border: 4px solid var(--cream);
+            border-top: 4px solid var(--teal);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body style="background: var(--cream);">
+    
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">🚀 LayoffToLiftoff</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pitch.html">Full Pitch</a></li>
+                <li><a href="battle.html">🔥 Our Story</a></li>
+                <li><a href="demo.html" style="color: var(--baby-pink); font-weight: 700;">Beta Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="demo-container">
+        
+        <!-- STEP 1: WELCOME & SETUP -->
+        <div id="step1" class="demo-step">
+            <div class="demo-header">
+                <h1>🔥 Welcome to Your Lifeline, PP!</h1>
+                <p>Let's get you set up so I can start helping TODAY.</p>
+            </div>
+            
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" id="userName" value="Prasad Pagade" placeholder="Enter your name">
+            </div>
+            
+            <div class="form-group">
+                <label>Current Location</label>
+                <input type="text" id="userLocation" value="Westminster, Colorado" placeholder="City, State">
+            </div>
+            
+            <div class="form-group">
+                <label>Your Role/Title</label>
+                <input type="text" id="userRole" value="Senior Engineer" placeholder="e.g., Senior Engineer">
+            </div>
+            
+            <div class="form-group">
+                <label>Your Key Skills (comma-separated)</label>
+                <input type="text" id="userSkills" value="n8n automation, TTS systems, Node.js" placeholder="e.g., Python, AWS, Machine Learning">
+            </div>
+            
+            <div class="form-group">
+                <label>How are you feeling right now? (Stress Level)</label>
+                <div style="display: flex; align-items: center;">
+                    <input type="range" min="1" max="10" value="7" id="stressLevel" class="stress-slider">
+                    <span class="stress-value" id="stressValue">7</span>
+                    <span style="margin-left: 0.5rem;">/10</span>
+                </div>
+                <small style="color: var(--charcoal); opacity: 0.7;">1 = Totally calm | 10 = Completely overwhelmed</small>
+            </div>
+            
+            <div class="form-group">
+                <label>When should I send your daily plan?</label>
+                <input type="time" id="planTime" value="07:00">
+            </div>
+            
+            <div class="form-group">
+                <label>Spouse/Partner Name (for family time protection)</label>
+                <input type="text" id="spouseName" value="Hannah" placeholder="Optional">
+            </div>
+            
+            <div class="form-group">
+                <label>Family Time Blocks</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" checked> Morning (7:00-8:00 AM) - Family breakfast
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" checked> Evening (5:00-7:00 PM) - Dinner & family time
+                    </label>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="generatePlan()" style="width: 100%; font-size: 1.2rem; padding: 1.5rem;">
+                🚀 Generate My First Daily Plan
+            </button>
+        </div>
+        
+        <!-- STEP 2: LOADING -->
+        <div id="step2" class="demo-step hidden">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <h2>Generating Your Personalized Daily Plan...</h2>
+                <p>Analyzing your situation, scanning jobs, creating your custom plan...</p>
+            </div>
+        </div>
+        
+        <!-- STEP 3: DAILY PLAN -->
+        <div id="step3" class="demo-step hidden">
+            <div class="demo-header">
+                <h2>📊 Your Daily Liftoff Plan - Day 1</h2>
+                <p>Generated just for you at <span id="displayTime">7:00 AM</span></p>
+            </div>
+            
+            <div class="daily-plan" id="dailyPlan">
+                <!-- Plan will be generated here -->
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="btn btn-secondary" onclick="showStep(1)" style="margin-right: 1rem;">
+                    ← Edit My Info
+                </button>
+                <button class="btn btn-primary" onclick="alert('🎉 Beta launches soon! Join the waitlist at LayoffToLiftoff.com')">
+                    Sign Up for Beta →
+                </button>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- DEMO SCRIPT -->
+    <script>
+        // Update stress value display
+        document.getElementById('stressLevel').addEventListener('input', function() {
+            document.getElementById('stressValue').textContent = this.value;
+        });
+        
+        function showStep(stepNumber) {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('step' + stepNumber).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+        
+        function generatePlan() {
+            // Get form values
+            const userName = document.getElementById('userName').value;
+            const userRole = document.getElementById('userRole').value;
+            const userSkills = document.getElementById('userSkills').value;
+            const stressLevel = document.getElementById('stressLevel').value;
+            const spouseName = document.getElementById('spouseName').value;
+            const planTime = document.getElementById('planTime').value;
+            
+            // Show loading
+            showStep(2);
+            
+            // Simulate AI generation (2 seconds)
+            setTimeout(() => {
+                // Generate plan
+                const plan = `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Good morning ${userName}!
+
+Today is your FIRST day of Liftoff.
+Let's make it count. You do 2 hours of work.
+I handle the rest.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+�� YOUR 3 TASKS TODAY:
+
+<div class="task-box">
+<strong>TASK 1: Apply to Senior Automation Engineer Role</strong><br>
+Company: TechCorp (Remote)<br>
+Why: Perfect match - they need ${userSkills.split(',')[0]} expertise<br>
+Time: 45 minutes<br>
+<a href="#" style="color: var(--baby-blue);">[View Job →]</a>
+</div>
+
+<div class="task-box">
+<strong>TASK 2: Update LinkedIn Profile</strong><br>
+Quick win to boost visibility<br>
+New headline: "${userRole} | ${userSkills.split(',')[0]} Expert"<br>
+Time: 10 minutes<br>
+<a href="#" style="color: var(--baby-blue);">[Go to LinkedIn →]</a>
+</div>
+
+<div class="task-box">
+<strong>TASK 3: Coffee Chat Outreach</strong><br>
+Connect with former colleague in your field<br>
+Message template provided<br>
+Time: 15 minutes<br>
+<a href="#" style="color: var(--baby-blue);">[See Message →]</a>
+</div>
+
+<strong>TOTAL TIME: 1 hour 10 minutes</strong><br>
+Then you're DONE for the day!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⏰ YOUR SCHEDULE TODAY:
+
+<div class="schedule-item locked-time">
+    <div class="schedule-time">7:00-8:00 AM</div>
+    <div>🔒 FAMILY BREAKFAST (LOCKED)<br>Time with ${spouseName} - No work allowed!</div>
+</div>
+
+<div class="schedule-item">
+    <div class="schedule-time">9:00-10:30 AM</div>
+    <div>💪 Your 3 Tasks<br>Focus mode: Complete & done</div>
+</div>
+
+<div class="schedule-item">
+    <div class="schedule-time">10:30-11:30 AM</div>
+    <div>☕ Break Time (MANDATORY)<br>Walk, coffee, NOT at computer</div>
+</div>
+
+<div class="schedule-item">
+    <div class="schedule-time">11:30 AM</div>
+    <div>🎉 YOU'RE DONE FOR THE DAY!<br>Seriously. Close the laptop. I've got the rest.</div>
+</div>
+
+<div class="schedule-item locked-time">
+    <div class="schedule-time">5:00-7:00 PM</div>
+    <div>🔒 FAMILY TIME (LOCKED)<br>Dinner with ${spouseName} - NO JOB SEARCH!</div>
+</div>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ WHAT I'M HANDLING FOR YOU:
+
+├── 🔍 Scanning 500+ jobs on LinkedIn, Indeed, Dice
+├── 📊 Found 47 matches, filtered to 3 perfect ones
+├── 👀 Monitoring your applications
+├── 🔬 Researching companies (culture, red flags)
+├── 📈 Updating your tracker automatically
+└── 🚨 Watching for urgent opportunities
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 YOUR PROGRESS:
+
+Days into Liftoff: <strong>1</strong><br>
+Current Stress: <strong>${stressLevel}/10</strong> ${stressLevel > 7 ? "(We'll help bring this down!)" : "(Great! Let's keep it here!)"}<br>
+Applications Sent: <strong>0</strong> (let's fix that today!)<br>
+Family Time Protected: <strong>YES!</strong> ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚫 IMPORTANT MESSAGE:
+
+${userName}, I know your brain.
+
+Right now you want to:
+- Open LinkedIn and scroll for hours
+- Apply to 50 random jobs
+- Research every company
+- Worry about everything
+
+<strong style="color: var(--baby-pink);">DON'T.</strong>
+
+I'm watching ALL of that for you.
+If something important happens, I'll tell you.
+
+Do your 3 tasks. Then STOP.
+Trust me. This works.
+
+${spouseName} built this FOR you.
+Let me help you.
+
+- Your Liftoff AI 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                `;
+                
+                document.getElementById('dailyPlan').innerHTML = plan;
+                document.getElementById('displayTime').textContent = planTime;
+                showStep(3);
+            }, 2000);
+        }
+    </script>
+    
+</body>
+</html>
