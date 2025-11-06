@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LayoffToLiftoff - Working Beta (Powered by Claude AI)</title>
+    
+    <!-- React 18.3.1 (Latest Stable) -->
+    <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel Standalone 7.24.7 (Latest) -->
+    <script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
+    
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #FFF8F0;
+            color: #2C3539;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1E5945 0%, #2C3539 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(30, 89, 69, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 182, 193, 0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(30, 89, 69, 0.15);
+            border: 2px solid #1E5945;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1E5945;
+            font-size: 1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #008B8B;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFB6C1;
+        }
+        
+        .stress-slider {
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(135deg, #FFB6C1 0%, #89CFF0 100%);
+            border-radius: 5px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .stress-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #008B8B;
+            cursor: pointer;
+        }
+        
+        .stress-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #008B8B;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .stress-display {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stress-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #008B8B;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FFB6C1 0%, #89CFF0 100%);
+            color: white;
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 1.5rem;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 182, 193, 0.4);
+        }
+        
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .spinner {
+            border: 4px solid #FFF8F0;
+            border-top: 4px solid #008B8B;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .plan-display {
+            background: #1E5945;
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+        
+        .error {
+            background: #ff6b6b;
+            color: white;
+            padding: 1.25rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 2rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+        
+        function PPBetaApp() {
+            const [step, setStep] = useState(1);
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState(null);
+            const [plan, setPlan] = useState('');
+            
+            const [formData, setFormData] = useState({
+                name: 'Prasad Pagade',
+                location: 'Westminster, Colorado',
+                role: 'Senior Engineer',
+                skills: 'n8n automation, TTS systems, Node.js',
+                stress: 7,
+                planTime: '07:00',
+                spouse: 'Hannah'
+            });
+            
+            const handleInputChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({ ...prev, [name]: value }));
+            };
+            
+            const generatePlan = async () => {
+                setLoading(true);
+                setError(null);
+                setStep(2);
+                
+                try {
+                    const response = await fetch("https://api.anthropic.com/v1/messages", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            model: "claude-sonnet-4-20250514",
+                            max_tokens: 2000,
+                            messages: [{
+                                role: "user",
+                                content: `You are ${formData.name}'s personal Liftoff AI assistant. Generate a caring, personalized Day 1 daily plan.
+
+USER PROFILE:
+Name: ${formData.name}
+Role: ${formData.role}  
+Key Skills: ${formData.skills}
+Location: ${formData.location}
+Current Stress Level: ${formData.stress}/10
+Partner: ${formData.spouse}
+Preferred Plan Time: ${formData.planTime}
+
+MISSION:
+Create a Day 1 plan that protects ${formData.name}'s mental health while moving his job search forward efficiently.
+
+REQUIREMENTS:
+1. ONLY 3 specific, actionable tasks (maximum 2 hours total work time)
+2. Each task must be realistic for Day 1 of job searching
+3. Include a daily schedule with:
+   - Family time LOCKED at 7:00-8:00 AM
+   - Work blocks (2 hours max)
+   - Mandatory break time
+   - Family time LOCKED at 5:00-7:00 PM
+4. Adapt tone to stress level ${formData.stress}/10 (higher stress = more encouragement)
+5. Show what the AI is handling automatically (job scanning, tracking, research)
+6. Include current progress metrics (Day 1, stress level, etc.)
+7. End with a caring reminder to trust the process
+8. Reference ${formData.spouse} naturally as the person who built this for him
+
+TONE:
+- Warm and caring, but not cheesy or corporate
+- Confident and reassuring
+- Direct and honest (acknowledge his brain wants to overwork)
+- "We've got you" energy
+
+FORMAT:
+Use clear sections with headers, make it easy to scan. Use plain text formatting (no markdown). Be specific with task names, times, and what AI is handling.
+
+Generate the complete Day 1 Liftoff Plan for ${formData.name} now:`
+                            }]
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error?.message || 'Failed to generate plan');
+                    }
+                    
+                    const data = await response.json();
+                    const generatedPlan = data.content[0].text;
+                    
+                    setPlan(generatedPlan);
+                    setStep(3);
+                    
+                } catch (err) {
+                    console.error('Error:', err);
+                    setError(`Unable to generate plan: ${err.message}. Please try again or contact support.`);
+                    setStep(1);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            
+            return (
+                <div className="container">
+                    <div className="header">
+                        <h1>🔥 LayoffToLiftoff Beta</h1>
+                        <p>AI-Powered Career Recovery • Built for Real Humans</p>
+                        <div className="badge">
+                            Powered by Claude AI (Not ChatGPT! 😏)
+                        </div>
+                    </div>
+                    
+                    {step === 1 && (
+                        <div className="card">
+                            <h2 style={{marginBottom: '0.5rem', color: '#1E5945'}}>
+                                Welcome to Your Lifeline, PP!
+                            </h2>
+                            <p style={{marginBottom: '2rem', color: '#666', fontSize: '1.05rem'}}>
+                                Let's get you set up so Claude AI can start helping TODAY.
+                            </p>
+                            
+                            {error && <div className="error">⚠️ {error}</div>}
+                            
+                            <div className="form-group">
+                                <label>Your Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    placeholder="Enter your full name"
+                                />
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>Current Location</label>
+                                <input
+                                    type="text"
+                                    name="location"
+                                    value={formData.location}
+                                    onChange={handleInputChange}
+                                    placeholder="City, State"
+                                />
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>Your Role/Title</label>
+                                <input
+                                    type="text"
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={handleInputChange}
+                                    placeholder="e.g., Senior Software Engineer"
+                                />
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>Your Key Skills (comma-separated)</label>
+                                <input
+                                    type="text"
+                                    name="skills"
+                                    value={formData.skills}
+                                    onChange={handleInputChange}
+                                    placeholder="e.g., Python, AWS, Machine Learning"
+                                />
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>How stressed are you feeling right now?</label>
+                                <input
+                                    type="range"
+                                    name="stress"
+                                    min="1"
+                                    max="10"
+                                    value={formData.stress}
+                                    onChange={handleInputChange}
+                                    className="stress-slider"
+                                />
+                                <div className="stress-display">
+                                    <span className="stress-value">{formData.stress}</span>
+                                    <span>/10</span>
+                                    <span style={{fontSize: '0.85rem', opacity: 0.7}}>
+                                        (1 = Totally calm • 10 = Completely overwhelmed)
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>When should Claude send your daily plan?</label>
+                                <input
+                                    type="time"
+                                    name="planTime"
+                                    value={formData.planTime}
+                                    onChange={handleInputChange}
+                                />
+                                <small style={{color: '#666', fontSize: '0.9rem'}}>
+                                    Recommended: Early morning (7:00 AM)
+                                </small>
+                            </div>
+                            
+                            <div className="form-group">
+                                <label>Spouse/Partner Name (for family time protection)</label>
+                                <input
+                                    type="text"
+                                    name="spouse"
+                                    value={formData.spouse}
+                                    onChange={handleInputChange}
+                                    placeholder="Optional"
+                                />
+                            </div>
+                            
+                            <button 
+                                className="btn btn-primary"
+                                onClick={generatePlan}
+                                disabled={loading}
+                            >
+                                {loading ? 'Generating...' : '🚀 Generate My AI-Powered Plan'}
+                            </button>
+                        </div>
+                    )}
+                    
+                    {step === 2 && (
+                        <div className="card">
+                            <div className="loading">
+                                <div className="spinner"></div>
+                                <h2 style={{color: '#1E5945', marginBottom: '0.5rem'}}>
+                                    Claude AI is Creating Your Plan...
+                                </h2>
+                                <p style={{color: '#666', fontSize: '1.05rem'}}>
+                                    Analyzing your situation • Generating custom tasks • Building your schedule
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                    
+                    {step === 3 && (
+                        <div className="card">
+                            <h2 style={{marginBottom: '0.5rem', color: '#1E5945'}}>
+                                📊 Your Personalized Daily Plan
+                            </h2>
+                            <p style={{marginBottom: '2rem', color: '#666'}}>
+                                Generated by Claude AI just for {formData.name} • {new Date().toLocaleDateString()}
+                            </p>
+                            
+                            <div className="plan-display">
+                                {plan}
+                            </div>
+                            
+                            <div style={{marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                                <button 
+                                    className="btn btn-primary"
+                                    onClick={() => setStep(1)}
+                                    style={{flex: 1, minWidth: '200px'}}
+                                >
+                                    ← Generate New Plan
+                                </button>
+                                <button 
+                                    className="btn"
+                                    onClick={() => alert('🎉 Full beta launching soon! Join waitlist at LayoffToLiftoff.com')}
+                                    style={{
+                                        flex: 1,
+                                        minWidth: '200px',
+                                        background: 'linear-gradient(135deg, #008B8B 0%, #1E5945 100%)',
+                                        color: 'white'
+                                    }}
+                                >
+                                    Join Beta Waitlist →
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                    
+                    <div className="footer">
+                        <p><strong>Built with ❤️ by Hannah Kraulik Pagade + Claude AI</strong></p>
+                        <p style={{marginTop: '0.5rem'}}>
+                            Real AI • Real Plans • Real Help for PP & Millions Like Him 🚀
+                        </p>
+                        <p style={{fontSize: '0.85rem', marginTop: '1rem', opacity: 0.6'}}>
+                            React 18.3.1 • Claude Sonnet 4 • November 2025
+                        </p>
+                    </div>
+                </div>
+            );
+        }
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<PPBetaApp />);
+    </script>
+</body>
+</html>
